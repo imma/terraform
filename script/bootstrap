@@ -9,7 +9,7 @@ function bootstrap {
 
   local url_terraform="url_terraform_$(uname -s)"
   local fnm_terraform="$(basename "${!url_terraform}")"
-  cache curl "$fnm_terraform" "${!url_terraform}" -sL -L
+  cache curl "$fnm_terraform" "${!url_terraform}"
 
   pushd bin
   unzip -o "${BASEBOX_CACHE}/curl/$fnm_terraform"
