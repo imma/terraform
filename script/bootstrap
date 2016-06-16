@@ -14,7 +14,7 @@ function bootstrap {
   pushd bin
   unzip -o "${BASEBOX_CACHE}/curl/$fnm_terraform"
   chmod 755 terraform
-  (set +f; rm -f terraform* || true)
+  (set +f; rm -f terraform-* || true)
   popd
 }
 
