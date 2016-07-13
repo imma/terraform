@@ -4,8 +4,8 @@ function bootstrap {
   local shome="${_terraform_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   source "$shome/script/profile"
 
-  local url_terraform_Darwin='https://releases.hashicorp.com/terraform/0.7.0-rc2/terraform_0.7.0-rc2_darwin_amd64.zip'
-  local url_terraform_Linux='https://releases.hashicorp.com/terraform/0.7.0-rc2/terraform_0.7.0-rc2_linux_amd64.zip'
+  local url_terraform_Darwin="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_darwin_amd64.zip"
+  local url_terraform_Linux="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
 
   local url_terraform="url_terraform_$(uname -s)"
   local fnm_terraform="$(basename "${!url_terraform}")"
@@ -13,8 +13,18 @@ function bootstrap {
 
   pushd bin
   unzip -o "${BASEBOX_CACHE}/curl/$fnm_terraform"
-  chmod 755 terraform
-  (set +f; rm -f terraform-* || true)
+
+  case "$TERRAFORM_VERSION" in
+    0.6.*)
+      chmod 755 terraform
+      (set +f; chmod 755 terraform-*)
+      ;;
+    0.7.*)
+      chmod 755 terraform
+      (set +f; rm -f terraform-* || true)
+      ;;
+  esac
+
   popd
 }
 
