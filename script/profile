@@ -4,7 +4,7 @@ function profile {
   local shome="${_terraform_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
-  export TERRAFORM_VERSION="${TERRAFORM_VERSION:-0.7.0-rc2}"
+  export TERRAFORM_VERSION="${TERRAFORM_VERSION:-0.7.0-rc3}"
 }
 
 profile
