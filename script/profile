@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-function profile {
+function _terraform_profile {
   local shome="${_terraform_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
   export TERRAFORM_VERSION="${TERRAFORM_VERSION:-0.7.0}"
 }
 
-profile
+_terraform_profile
