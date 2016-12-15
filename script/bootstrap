@@ -13,13 +13,7 @@ function bootstrap {
 
   pushd bin
   unzip -o "${BASEBOX_CACHE}/curl/$fnm_terraform"
-
-  case "$TERRAFORM_VERSION" in
-    0.7.*)
-      chmod 755 terraform
-      ;;
-  esac
-
+  chmod 755 terraform
   popd
 }
 
