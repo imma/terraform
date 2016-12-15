@@ -15,13 +15,8 @@ function bootstrap {
   unzip -o "${BASEBOX_CACHE}/curl/$fnm_terraform"
 
   case "$TERRAFORM_VERSION" in
-    0.6.*)
-      chmod 755 terraform
-      (set +f; chmod 755 terraform-*)
-      ;;
     0.7.*)
       chmod 755 terraform
-      (set +f; rm -f terraform-* || true)
       ;;
   esac
 
