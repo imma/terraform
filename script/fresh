@@ -11,4 +11,4 @@ function main {
   return 0
 }
 
-source sub "$0" "$@"
+source sub "$BASH_SOURCE" "$@"
