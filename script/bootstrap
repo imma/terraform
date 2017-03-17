@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-function bootstrap {
+function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
+
+  TERRAFORM_VERSION="${1:-${TERRAFORM_VERSION:-}}"
 
   local url_terraform_Darwin="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_darwin_amd64.zip"
   local url_terraform_Linux="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
@@ -17,4 +19,4 @@ function bootstrap {
   popd
 }
 
-bootstrap
+main "$@"
