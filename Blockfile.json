@@ -1,6 +1,5 @@
 {
   "require": [
-    "curl",
-    "tfenv"
+    "curl"
   ]
 }
