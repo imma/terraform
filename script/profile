@@ -3,6 +3,8 @@
 function _terraform_profile {
   local shome="${_terraform_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
+
+  export TF_PLUGIN_CACHE_DIR="${BOARD_PATH}/.terraform.d/plugin-cache"
 }
 
 _terraform_profile
