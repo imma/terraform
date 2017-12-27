@@ -1,5 +1,8 @@
 {
   "require": [
     "curl"
-  ]
+  ],
+  "versions": {
+    "terraform": "hashicorp/terraform"
+  }
 }
