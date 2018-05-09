@@ -6,8 +6,21 @@ function main {
 
   block compile bundler
 
-  mkdir -p "$shome/bim"
+  mkdir -p "$shome/bin"
   ln -nfs ../vendor/bundle/bin/landscape "$shome/bin/"
+
+  local url_terraform_docs_Darwin="https://github.com/segmentio/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs_darwin_amd64"
+  local url_terraform_docs_LInux="https://github.com/segmentio/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs_linux_amd64"
+
+  local url_terraform_docs="url_terraform_docs_$(uname -s)"
+  local fnm_terraform_docs="$(basename "${!url_terraform_docs}")-${TERRAFORM_DOCS_VERSION}"
+  cache curl "$fnm_terraform_docs" "${!url_terraform_docs}"
+
+  mkdir -p "$shome/bin"
+  pushd "$shome/bin"
+  cp "${DATA}/cache/curl/$fnm_terraform_docs" "$shome/bin/terraform-docs"
+  chmod 755 "$shome/bin/terraform-docs"
+  popd
 }
 
 main "$@"

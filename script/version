@@ -7,9 +7,11 @@ function version {
   cd "$shome"
 
   local ver_terraform_landscape="$(landscape --version 2>/dev/null | awk '{print $3}' || true)"
+  local ver_terraform_docs="$(terraform-docs --version 2>/dev/null | sed 's#^v##' || true)"
   jq -n \
     --arg terraform_landscape "$ver_terraform_landscape" \
-    '{terraform_landscape: $terraform_landscape}'
+    --arg terraform_docs "$ver_terraform_docs" \
+    '{terraform_landscape: $terraform_landscape, terraform_docs: $terraform_docs}'
 }
 
 version "$@"
