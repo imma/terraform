@@ -10,7 +10,7 @@ function main {
   ln -nfs ../vendor/bundle/bin/landscape "$shome/bin/"
 
   local url_terraform_docs_Darwin="https://github.com/segmentio/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs_darwin_amd64"
-  local url_terraform_docs_LInux="https://github.com/segmentio/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs_linux_amd64"
+  local url_terraform_docs_Linux="https://github.com/segmentio/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs_linux_amd64"
 
   local url_terraform_docs="url_terraform_docs_$(uname -s)"
   local fnm_terraform_docs="$(basename "${!url_terraform_docs}")-${TERRAFORM_DOCS_VERSION}"
